@@ -103,7 +103,9 @@ func plural(groupName string) string {
 // normalize makes small corrections for the final generated string.
 func normalize(parsedNumber string) string {
 	parsedNumber = strings.ReplaceAll(parsedNumber, "cem"+CONJUNCTION, "cento"+CONJUNCTION)
-	parsedNumber = strings.ReplaceAll(parsedNumber, "um mil", "mil")
+	parsedNumber = regexp.MustCompile("(([^e] )|^)um mil").ReplaceAllStringFunc(parsedNumber, func(s string) string {
+		return strings.Replace(s, "um ", "", 1)
+	})
 	var hasHundreds = false
 	for _, value := range HUNDREDS.translate {
 		if value == "" {

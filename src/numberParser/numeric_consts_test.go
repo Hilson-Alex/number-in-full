@@ -7,7 +7,13 @@ import (
 
 func TestNormalize(t *testing.T) {
 	if str := normalize("cem" + CONJUNCTION); !strings.Contains(str, "cento") {
-		t.Errorf("%q, not converted to %q!", "cem", "cento")
+		t.Error("\"cem\", not converted to \"cento\"!")
+	}
+	if str := normalize("um mil"); strings.Contains(str, "um") {
+		t.Error("\"um\" in \"um mil\" should be ripped off!")
+	}
+	if str := normalize("cinquenta e um mil"); !strings.Contains(str, "um") {
+		t.Error("\"um\" in \"cinquenta e um mil\" should stay!")
 	}
 	for key, value := range HUNDREDS.translate {
 		if value == "" {
