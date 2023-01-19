@@ -31,4 +31,5 @@ generated name, while the `parser_test.go` file tests most all the functions nee
 
 ## Author
 
-- [Hilson-Alex](https://github.com/Hilson-Alex)
+- [Hilson A. W. Junior](https://github.com/Hilson-Alex)
+ - *Initial work*
